@@ -2,14 +2,19 @@
   SCSS REFACTOR - LEANDRO BORELLI MUAY THAI
 ====================================================================*/
 
-/* Variáveis de Cor */
+/*====================================================================
+  1. VARIÁVEIS E MIXINS
+====================================================================*/
+
+/* Variáveis de Cor (Ajustadas para as cores do seu CSS original e SCSS) */
 $white: #ffffff;
 $black: #000000;
-$primary-green: #63f74f; /* Fundo principal */
-$secondary-red: #d62828; /* Cor de destaque (Muay Thai) */
+$primary-green: #63f74f; /* Fundo principal (Cor do código refatorado anterior) */
+$secondary-red: #b82d2d; /* Cor de destaque (Muay Thai e elementos) */
 $dark-bg: #040000;
 $text-dark: #212121;
 $header-bg: #080203;
+$body-bg-original: #610f0f; /* Cor de fundo do body no seu style.css original */
 
 /* Mixins */
 @mixin main-font {
@@ -39,13 +44,13 @@ $header-bg: #080203;
 }
 
 /*====================================================================
-  ESTILOS GERAIS E LAYOUT
+  2. ESTILOS GERAIS E LAYOUT
 ====================================================================*/
 
 body {
   @include main-font;
-  color: $text-dark;
-  background-color: $primary-green;
+  color: $dark-bg; /* Cor escura do seu CSS */
+  background-color: $primary-green; /* Mantendo o verde para as seções */
   overflow-x: hidden;
 }
 
@@ -77,12 +82,13 @@ a, a:hover, a:focus {
 }
 
 /*====================================================================
-  HEADER E NAVEGAÇÃO
+  3. HEADER E NAVEGAÇÃO
 ====================================================================*/
 
 .hero_area {
   min-height: 100vh;
-  background-image: url(../images/hero-bg.jpg);
+  /* Use a imagem de fundo original ou ajuste o caminho conforme seu projeto */
+  background-image: url(../images/lutador2.jpg); 
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
@@ -97,22 +103,20 @@ a, a:hover, a:focus {
     left: 0;
     width: 100%;
     height: 100%;
-    /* Gradiente vermelho escuro e transição para o verde do corpo */
-    background: linear-gradient(to bottom, rgba($secondary-red, 0.5), rgba($secondary-red, 0.8) 60%, $primary-green);
+    /* Gradiente transparente para o vermelho escuro do seu CSS original */
+    background: linear-gradient(to bottom, transparent, $body-bg-original);
   }
 }
 
 .header_section {
   background-color: $white;
   position: relative;
-  z-index: 10;
+  z-index: 100;
   padding: 10px 0;
   box-shadow: 0 2px 10px rgba($black, 0.1);
   
   /* Borda com corte geométrico */
-  @media (min-width: 768px) {
-    clip-path: polygon(50% 0%, 100% 0, 100% 100%, 28.5% 100%, 26.5% 86%, 0 84%, 0 0);
-  }
+  clip-path: polygon(50% 0%, 100% 0, 100% 100%, 28.5% 100%, 26.5% 86%, 0 84%, 0 0);
 
   &::before {
     content: "";
@@ -124,9 +128,6 @@ a, a:hover, a:focus {
     background: $header-bg;
     z-index: 1;
     clip-path: polygon(50% 0%, 100% 0, 100% 100%, 8% 100%, 0 0);
-    @media (max-width: 767px) {
-      display: none;
-    }
   }
 
   .header_nav {
@@ -134,75 +135,41 @@ a, a:hover, a:focus {
     justify-content: space-between;
   }
 
-  .brand_desktop img {
+  .navbar-brand img {
     width: 125px;
-    transition: transform 0.3s;
-    &:hover {
-        transform: scale(1.05);
-    }
-  }
-  .brand_mobile {
-    display: none;
   }
 }
 
 .main_nav {
   position: relative;
   z-index: 9;
-  width: 100%;
 
-  .top_nav {
-    ul {
-      display: flex;
-      justify-content: flex-end;
-      margin: 0;
-      padding: 0;
-      position: relative;
-      z-index: 2;
+  .top_nav ul {
+    display: flex;
+    justify-content: flex-end;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    z-index: 2;
 
-      li {
-        list-style-type: none;
-        a {
-          display: flex;
-          align-items: center;
-          color: $white;
-          margin-left: 30px;
-          padding: 10px 0;
-          transition: color 0.3s;
-
-          img {
-            max-width: 20px;
-            max-height: 20px;
-            margin-right: 8px;
-          }
-          &:hover {
-              color: $secondary-red;
-          }
+    li {
+      list-style-type: none;
+      a {
+        display: flex;
+        align-items: center;
+        color: $white;
+        margin: 10px 0 10px 35px;
+        transition: color 0.3s;
+        img {
+          max-width: 25px;
+          max-height: 25px;
+          margin-right: 15px;
         }
-      }
-
-      @media (max-width: 991px) {
-        justify-content: center;
-        li a {
-          margin-left: 15px;
-        }
-      }
-      @media (max-width: 576px) {
-        flex-direction: column;
-        align-items: flex-end;
-        li {
-            width: fit-content;
-            a {
-                margin: 5px 0;
-            }
+        &:hover {
+            color: $secondary-red;
         }
       }
     }
-  }
-
-  .bottom_nav {
-    background-color: $white;
-    padding: 0 15px;
   }
 }
 
@@ -210,7 +177,7 @@ a, a:hover, a:focus {
   padding: 0;
 
   .navbar-nav .nav-item .nav-link {
-    padding: 10px 15px;
+    padding: 25px 20px;
     color: $text-dark;
     text-transform: uppercase;
     font-weight: 600;
@@ -220,20 +187,11 @@ a, a:hover, a:focus {
       color: $secondary-red;
     }
   }
-
-  .navbar-toggler {
-    border: none;
-    .navbar-toggler-icon {
-      background-image: url(../images/menu.png);
-      background-size: 35px;
-      width: 35px;
-      height: 35px;
-    }
-  }
 }
 
+
 /*====================================================================
-  SLIDER SECTION (HERO)
+  4. SLIDER SECTION (HERO) - CORREÇÃO DO BUG DO MUAY THAI
 ====================================================================*/
 .slider_section {
   position: relative;
@@ -247,24 +205,25 @@ a, a:hover, a:focus {
     align-items: center;
   }
 
-  /* Título Girado (Muay Thai lateral) - CORRIGIDO O BUG DE CORTE */
+  /* Título Girado (Muay Thai lateral) - CORRIGIDO */
   .slider_heading {
     position: absolute;
-    left: -100px;
+    z-index: 99;
+    /* Ajuste de LEFT para puxar o texto para fora da tela e centralizar após a rotação */
+    left: -80px; 
     top: 50%;
+    
+    /* Rotação de 270 graus */
     transform: translateY(-50%) rotate(270deg);
+    /* Centraliza a origem da rotação para o ponto central do elemento */
     transform-origin: center;
-    z-index: 5;
+    
     pointer-events: none;
-    line-height: 1.1;
 
     h2 {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+      /* Utilizado clamp para garantir um tamanho grande mas com limite */
       font-size: clamp(4rem, 8vw, 10rem);
       text-transform: uppercase;
-      letter-spacing: 4px;
       font-weight: 900;
       color: $white;
       margin: 0;
@@ -277,30 +236,15 @@ a, a:hover, a:focus {
 
     /* Media Queries para o título girado */
     @media (max-width: 1200px) {
-      left: -80px;
+      left: -70px;
     }
     @media (max-width: 992px) {
       left: -60px;
     }
-    /* Mobile/Tablet: Título é exibido normalmente, com menor opacidade */
+    /* Mobile/Tablet: Ajuste para evitar o corte total */
     @media (max-width: 767px) {
-      position: absolute; /* Retorna ao absoluto, mas ajusta a posição */
-      left: -10%;
-      top: 50%;
-      transform: translateY(-50%) rotate(270deg);
-      opacity: 0.5; 
-      h2 { 
-        font-size: clamp(2.5rem, 5vw, 7rem); 
-        flex-direction: column;
-      }
-    }
-    @media (max-width: 576px) {
-        left: -12%;
-        opacity: 0.4;
-    }
-    @media (max-width: 400px) {
-        left: -15%;
-        opacity: 0.25;
+      left: -100px; /* Puxa mais para fora para parecer "escondido" */
+      opacity: 0.3; 
     }
   }
 
@@ -330,14 +274,15 @@ a, a:hover, a:focus {
       }
     }
   }
-
-  /* Controles do Carousel */
+  
+  /* Controles do Carousel (setas) */
   .carousel-control-prev, .carousel-control-next {
     position: absolute;
     top: 50%;
+    right: 25px; /* Posição à direita, como no seu CSS */
     transform: translateY(-50%);
-    width: 40px;
-    height: 40px;
+    width: 55px;
+    height: 55px;
     border: none;
     opacity: 1;
     background-repeat: no-repeat;
@@ -347,250 +292,66 @@ a, a:hover, a:focus {
     border-radius: 50%;
     transition: all 0.3s;
     z-index: 10;
-
+  }
+  
+  .carousel-control-prev {
+    transform: translateY(57%);
+    background-image: url(../images/prev.png);
     &:hover {
-      background-color: $white;
-      background-image: url(../images/prev-grey.png); /* Exemplo para mudança de cor ao hover */
+        background-color: $white;
     }
   }
-
-  .carousel-control-prev {
-    left: 10px;
-    background-image: url(../images/prev.png);
-  }
-
   .carousel-control-next {
-    right: 10px;
+    transform: translateY(-57%);
     background-image: url(../images/next.png);
+    &:hover {
+        background-color: $white;
+    }
   }
-
+  
   .carousel-indicators {
-    display: none;
+      display: none;
   }
 }
 
 
 /*====================================================================
-  ABOUT SECTION (BENEFÍCIOS)
+  5. OUTRAS SEÇÕES (AJUSTES DE CORES)
 ====================================================================*/
+
 .about_section {
   background-color: $dark-bg;
   color: $white;
   
   .heading_container h2 {
     color: $secondary-red;
-    font-size: 3rem;
-  }
-
-  .about_container {
-    padding: 30px;
-    background-image: url(../images/about-bg.jpg);
-    background-size: cover;
-    background-position: center;
-    border-radius: 10px;
-    box-shadow: 0 10px 30px rgba($black, 0.5);
-
-    .detail-box {
-      padding: 20px;
-      ul {
-        list-style: none;
-        padding-left: 0;
-        li {
-          line-height: 2.2;
-          border-bottom: 1px solid rgba($white, 0.1);
-        }
-      }
-      hr {
-        margin: 30px auto;
-        border: none;
-        width: 2px;
-        height: 100px;
-        background-color: $secondary-red;
-      }
-      a {
-        @include hero_btn($secondary-red, $white, 10px, 35px, 35px);
-        margin: 20px auto 0 auto;
-        font-weight: 700;
-        box-shadow: 0 0 15px rgba($secondary-red, 0.7);
-      }
-    }
   }
 }
 
-/*====================================================================
-  CLASS SECTION (VÍDEOS)
-====================================================================*/
 .class_section {
   background-color: $primary-green;
   color: $dark-bg;
-
-  .heading_container {
-    align-items: center;
-    text-align: center;
-    h2 {
-      color: $dark-bg;
-    }
-  }
-  
-  .class_box-container {
-    margin-top: 45px;
-    
-    .box {
-      padding: 10px;
-      .img-box {
-        position: relative;
-        background-color: $dark-bg;
-        border-radius: 8px;
-        overflow: hidden;
-        box-shadow: 0 5px 15px rgba($dark-bg, 0.3);
-        
-        video {
-          width: 100%;
-          height: auto;
-          display: block;
-          min-height: 250px;
-        }
-      }
-    }
-  }
-  
-  /* Estilos do Owl Carousel para a seção de vídeos */
-  .owl-carousel1 {
-    .owl-nav {
-      position: relative;
-      @include flexCenter;
-      margin-top: 30px;
-      
-      .owl-prev, .owl-next {
-        width: 50px;
-        height: 50px;
-        background-color: $secondary-red;
-        border-radius: 50%;
-        margin: 0 10px;
-        background-size: 15px;
-        background-repeat: no-repeat;
-        background-position: center;
-        outline: none;
-        transition: all 0.3s;
-
-        &:hover {
-            background-color: $dark-bg;
-            opacity: 0.8;
-        }
-      }
-
-      .owl-prev {
-        background-image: url(../images/prev.png);
-      }
-      .owl-next {
-        background-image: url(../images/next.png);
-      }
-    }
-  }
 }
 
-
-/*====================================================================
-  BLOG SECTION (HORÁRIOS)
-====================================================================*/
 .blog_section {
   background-color: $dark-bg;
   color: $white;
-
-  .heading_container {
-    align-items: center;
-    text-align: center;
-  }
-
-  .box {
-    margin-top: 45px;
-    .img-box {
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: 0 10px 20px rgba($black, 0.6);
-      img {
-        width: 100%;
-        height: auto;
-        display: block;
-      }
-    }
-  }
 }
 
-/*====================================================================
-  INFO SECTION (ENDEREÇO E FOOTER)
-====================================================================*/
 .info_section {
   background-color: $primary-green;
-  padding-top: 40px;
-  
-  .info_main-row {
-    align-items: flex-start;
-  }
   
   .heading_container h2 {
     color: $dark-bg;
   }
-
-  .map_container {
-    margin-bottom: 20px;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 5px 15px rgba($black, 0.2);
-    border: 3px solid $dark-bg;
-
-    .map-responsive {
-      position: relative;
-      padding-bottom: 56.25%; 
-      height: 0;
-      overflow: hidden;
-    }
-
-    iframe {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-    }
-  }
   
   p {
     color: $dark-bg;
-    font-weight: 600;
-    margin-bottom: 30px;
   }
 }
 
-
-/* Footer Section */
 .footer_section {
-  padding: 20px 0;
-  border-top: 1px solid rgba($dark-bg, 0.1);
-  
-  .social_box {
-    @include flexCenter;
-    margin-bottom: 20px;
-
-    a {
-      margin: 0 10px;
-      transition: transform 0.3s;
-
-      img {
-        max-width: 30px;
-        max-height: 30px;
-      }
-
-      &:hover {
-          transform: scale(1.1);
-      }
-    }
-  }
-
   p {
-    margin: 0;
     color: $dark-bg;
-    text-align: center;
-    font-size: 0.9rem;
   }
 }
