@@ -48,6 +48,18 @@ body {
 }
 
 /* --- Hero Section --- */
+.hero-logo {
+    max-width: 300px; /* Ajuste o tamanho máximo da logo conforme necessário */
+    height: auto;
+    margin-bottom: 20px; /* Espaçamento abaixo da logo */
+}
+
+@media (max-width: 768px) {
+    .hero-logo {
+        max-width: 200px; /* Tamanho menor para telas menores */
+    }
+}
+
 .hero {
     position: relative;
     height: 100vh;
