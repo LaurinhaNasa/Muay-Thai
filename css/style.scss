@@ -1,8 +1,12 @@
-/* Variáveis */
+/*====================================================================
+  SCSS REFACTOR - LEANDRO BORELLI MUAY THAI
+====================================================================*/
+
+/* Variáveis de Cor */
 $white: #ffffff;
 $black: #000000;
-$primary-green: #63f74f; /* Antiga $primary */
-$secondary-red: #d62828; /* Novo primário para o Muay Thai */
+$primary-green: #63f74f; /* Fundo principal */
+$secondary-red: #d62828; /* Cor de destaque (Muay Thai) */
 $dark-bg: #040000;
 $text-dark: #212121;
 $header-bg: #080203;
@@ -34,12 +38,15 @@ $header-bg: #080203;
   align-items: center;
 }
 
-/* Geral */
+/*====================================================================
+  ESTILOS GERAIS E LAYOUT
+====================================================================*/
+
 body {
   @include main-font;
   color: $text-dark;
   background-color: $primary-green;
-  overflow-x: hidden; /* Evita scroll lateral indesejado */
+  overflow-x: hidden;
 }
 
 a, a:hover, a:focus {
@@ -65,13 +72,17 @@ a, a:hover, a:focus {
     text-transform: uppercase;
     color: $dark-bg;
     font-size: 2.5rem;
+    line-height: 1.2;
   }
 }
 
-/* Header Section */
+/*====================================================================
+  HEADER E NAVEGAÇÃO
+====================================================================*/
+
 .hero_area {
   min-height: 100vh;
-  background-image: url(../images/hero-bg.jpg); /* Assumindo que a imagem existe */
+  background-image: url(../images/hero-bg.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
@@ -86,7 +97,8 @@ a, a:hover, a:focus {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(to bottom, transparent 60%, $primary-green);
+    /* Gradiente vermelho escuro e transição para o verde do corpo */
+    background: linear-gradient(to bottom, rgba($secondary-red, 0.5), rgba($secondary-red, 0.8) 60%, $primary-green);
   }
 }
 
@@ -95,8 +107,9 @@ a, a:hover, a:focus {
   position: relative;
   z-index: 10;
   padding: 10px 0;
+  box-shadow: 0 2px 10px rgba($black, 0.1);
   
-  /* Borda com corte geométrico no mobile/desktop */
+  /* Borda com corte geométrico */
   @media (min-width: 768px) {
     clip-path: polygon(50% 0%, 100% 0, 100% 100%, 28.5% 100%, 26.5% 86%, 0 84%, 0 0);
   }
@@ -112,7 +125,7 @@ a, a:hover, a:focus {
     z-index: 1;
     clip-path: polygon(50% 0%, 100% 0, 100% 100%, 8% 100%, 0 0);
     @media (max-width: 767px) {
-      display: none; /* Remove o corte no topo no mobile */
+      display: none;
     }
   }
 
@@ -123,6 +136,10 @@ a, a:hover, a:focus {
 
   .brand_desktop img {
     width: 125px;
+    transition: transform 0.3s;
+    &:hover {
+        transform: scale(1.05);
+    }
   }
   .brand_mobile {
     display: none;
@@ -132,12 +149,12 @@ a, a:hover, a:focus {
 .main_nav {
   position: relative;
   z-index: 9;
-  width: 100%; /* Permite que o top_nav se alinhe */
+  width: 100%;
 
   .top_nav {
     ul {
       display: flex;
-      justify-content: flex-end; /* Alinha os contatos à direita */
+      justify-content: flex-end;
       margin: 0;
       padding: 0;
       position: relative;
@@ -151,11 +168,15 @@ a, a:hover, a:focus {
           color: $white;
           margin-left: 30px;
           padding: 10px 0;
+          transition: color 0.3s;
 
           img {
             max-width: 20px;
             max-height: 20px;
             margin-right: 8px;
+          }
+          &:hover {
+              color: $secondary-red;
           }
         }
       }
@@ -203,7 +224,7 @@ a, a:hover, a:focus {
   .navbar-toggler {
     border: none;
     .navbar-toggler-icon {
-      background-image: url(../images/menu.png); /* Assumindo que a imagem existe */
+      background-image: url(../images/menu.png);
       background-size: 35px;
       width: 35px;
       height: 35px;
@@ -211,24 +232,31 @@ a, a:hover, a:focus {
   }
 }
 
-
-/* Slider Section (Hero Content) */
+/*====================================================================
+  SLIDER SECTION (HERO)
+====================================================================*/
 .slider_section {
   position: relative;
   height: calc(100vh - 80px);
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include flexCenter;
   overflow: hidden;
 
+  .row {
+    width: 100%;
+    height: 100%;
+    align-items: center;
+  }
+
+  /* Título Girado (Muay Thai lateral) - CORRIGIDO O BUG DE CORTE */
   .slider_heading {
     position: absolute;
+    left: -100px;
     top: 50%;
-    transform: translate(-50%, -50%) rotate(270deg);
+    transform: translateY(-50%) rotate(270deg);
     transform-origin: center;
     z-index: 5;
     pointer-events: none;
-    left: 0;
+    line-height: 1.1;
 
     h2 {
       display: flex;
@@ -243,33 +271,40 @@ a, a:hover, a:focus {
       line-height: 1;
 
       span {
-        color: $secondary-red;
+        color: $secondary-red; /* Destaque em vermelho */
       }
     }
 
     /* Media Queries para o título girado */
     @media (max-width: 1200px) {
-      h2 { font-size: clamp(3.5rem, 7vw, 9rem); }
+      left: -80px;
     }
     @media (max-width: 992px) {
-      h2 { font-size: clamp(3rem, 6vw, 8rem); }
+      left: -60px;
     }
+    /* Mobile/Tablet: Título é exibido normalmente, com menor opacidade */
     @media (max-width: 767px) {
+      position: absolute; /* Retorna ao absoluto, mas ajusta a posição */
       left: -10%;
-      opacity: 0.5;
-      h2 { font-size: clamp(2.5rem, 5vw, 7rem); }
+      top: 50%;
+      transform: translateY(-50%) rotate(270deg);
+      opacity: 0.5; 
+      h2 { 
+        font-size: clamp(2.5rem, 5vw, 7rem); 
+        flex-direction: column;
+      }
     }
     @media (max-width: 576px) {
-      left: -12%;
-      opacity: 0.4;
-      h2 { font-size: clamp(2rem, 4.5vw, 6rem); }
+        left: -12%;
+        opacity: 0.4;
     }
     @media (max-width: 400px) {
-      left: -15%;
-      opacity: 0.25;
+        left: -15%;
+        opacity: 0.25;
     }
   }
 
+  /* Conteúdo do Carrossel (Frases) */
   .carousel-item {
     .detail-box {
       @include flexCenter;
@@ -283,6 +318,7 @@ a, a:hover, a:focus {
         text-transform: uppercase;
         color: $white;
         line-height: 1.2;
+        text-shadow: 2px 2px 4px rgba($black, 0.5);
       }
 
       hr {
@@ -298,7 +334,7 @@ a, a:hover, a:focus {
   /* Controles do Carousel */
   .carousel-control-prev, .carousel-control-next {
     position: absolute;
-    top: 50%; /* Centraliza verticalmente */
+    top: 50%;
     transform: translateY(-50%);
     width: 40px;
     height: 40px;
@@ -314,32 +350,32 @@ a, a:hover, a:focus {
 
     &:hover {
       background-color: $white;
+      background-image: url(../images/prev-grey.png); /* Exemplo para mudança de cor ao hover */
     }
   }
 
   .carousel-control-prev {
     left: 10px;
     background-image: url(../images/prev.png);
-    &:hover { background-image: url(../images/prev-grey.png); }
   }
 
   .carousel-control-next {
     right: 10px;
     background-image: url(../images/next.png);
-    &:hover { background-image: url(../images/next-grey.png); }
   }
 
-  /* Indicadores do Carousel (removidos os números conforme HTML, mas mantendo a classe se necessário) */
   .carousel-indicators {
-    display: none; /* Mantendo a estilização original para ocultar os números */
+    display: none;
   }
 }
 
-/* About Section (Benefícios) */
+
+/*====================================================================
+  ABOUT SECTION (BENEFÍCIOS)
+====================================================================*/
 .about_section {
   background-color: $dark-bg;
   color: $white;
-  padding: 80px 0;
   
   .heading_container h2 {
     color: $secondary-red;
@@ -348,7 +384,7 @@ a, a:hover, a:focus {
 
   .about_container {
     padding: 30px;
-    background-image: url(../images/about-bg.jpg); /* Assumindo que a imagem existe */
+    background-image: url(../images/about-bg.jpg);
     background-size: cover;
     background-position: center;
     border-radius: 10px;
@@ -356,9 +392,13 @@ a, a:hover, a:focus {
 
     .detail-box {
       padding: 20px;
-      p {
-        margin-top: 20px;
-        line-height: 1.8;
+      ul {
+        list-style: none;
+        padding-left: 0;
+        li {
+          line-height: 2.2;
+          border-bottom: 1px solid rgba($white, 0.1);
+        }
       }
       hr {
         margin: 30px auto;
@@ -375,15 +415,11 @@ a, a:hover, a:focus {
       }
     }
   }
-  /* Ajuste responsivo do container */
-  @media (max-width: 991px) {
-    .about_container {
-      margin: 0 15px;
-    }
-  }
 }
 
-/* Class Section (Vídeos) */
+/*====================================================================
+  CLASS SECTION (VÍDEOS)
+====================================================================*/
 .class_section {
   background-color: $primary-green;
   color: $dark-bg;
@@ -406,6 +442,7 @@ a, a:hover, a:focus {
         background-color: $dark-bg;
         border-radius: 8px;
         overflow: hidden;
+        box-shadow: 0 5px 15px rgba($dark-bg, 0.3);
         
         video {
           width: 100%;
@@ -438,6 +475,7 @@ a, a:hover, a:focus {
 
         &:hover {
             background-color: $dark-bg;
+            opacity: 0.8;
         }
       }
 
@@ -452,7 +490,9 @@ a, a:hover, a:focus {
 }
 
 
-/* Blog Section (Horários) */
+/*====================================================================
+  BLOG SECTION (HORÁRIOS)
+====================================================================*/
 .blog_section {
   background-color: $dark-bg;
   color: $white;
@@ -467,6 +507,7 @@ a, a:hover, a:focus {
     .img-box {
       border-radius: 10px;
       overflow: hidden;
+      box-shadow: 0 10px 20px rgba($black, 0.6);
       img {
         width: 100%;
         height: auto;
@@ -476,7 +517,9 @@ a, a:hover, a:focus {
   }
 }
 
-/* Info Section (Endereço e Footer) */
+/*====================================================================
+  INFO SECTION (ENDEREÇO E FOOTER)
+====================================================================*/
 .info_section {
   background-color: $primary-green;
   padding-top: 40px;
@@ -485,15 +528,20 @@ a, a:hover, a:focus {
     align-items: flex-start;
   }
   
+  .heading_container h2 {
+    color: $dark-bg;
+  }
+
   .map_container {
     margin-bottom: 20px;
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 5px 15px rgba($black, 0.2);
+    border: 3px solid $dark-bg;
 
     .map-responsive {
       position: relative;
-      padding-bottom: 56.25%; /* 16:9 aspect ratio */
+      padding-bottom: 56.25%; 
       height: 0;
       overflow: hidden;
     }
