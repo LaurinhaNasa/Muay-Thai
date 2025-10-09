@@ -57,7 +57,7 @@ body {
 /*header section*/
 .hero_area {
   height: 100vh;
-  background-image: url(../images/lutador2.jpg);
+  background-image: url(https://laurafercordeiro.github.io/Muay-Thai/images/lutador2.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
@@ -102,18 +102,14 @@ body {
 .header_section {
   background-color: #ffffff;
   position: relative;
-  /* Mantenha o clip-path original */
   -webkit-clip-path: polygon(50% 0%, 100% 0, 100% 100%, 28.5% 100%, 26.5% 86%, 0 84%, 0 0);
   clip-path: polygon(50% 0%, 100% 0, 100% 100%, 28.5% 100%, 26.5% 86%, 0 84%, 0 0);
-  /* NOVO: Garante que o cabeçalho esteja acima */
   z-index: 100;
 }
 
-/* O elemento de navegação principal também precisa estar no topo. */
 .main_nav {
   position: relative;
-  /* NOVO: Garante que a barra de navegação principal esteja acima */
-  z-index: 101; 
+  z-index: 101;
 }
 
 .menu_width {
@@ -182,26 +178,8 @@ a:focus {
   text-transform: uppercase;
 }
 
-a,
-a:hover,
-a:focus {
-  text-decoration: none;
-}
-
-a:hover,
-a:focus {
-  color: initial;
-}
-
-.btn,
-.btn:focus {
-  outline: none !important;
-  -webkit-box-shadow: none;
-          box-shadow: none;
-}
-
 .custom_nav-container .nav_search-btn {
-  background-image: url(../images/search-icon.png);
+  background-image: url(https://laurafercordeiro.github.io/Muay-Thai/images/search-icon.png);
   background-size: 22px;
   background-repeat: no-repeat;
   background-position-y: 7px;
@@ -238,14 +216,13 @@ a:focus {
 }
 
 .custom_nav-container .navbar-toggler .navbar-toggler-icon {
-  background-image: url(../images/menu.png);
+  background-image: url(https://laurafercordeiro.github.io/Muay-Thai/images/menu.png);
   background-size: 55px;
 }
 
 /*end header section*/
+
 /* slider section */
-
-
 .slider_section {
   height: calc(100% - 80px);
   display: -webkit-box;
@@ -269,22 +246,17 @@ a:focus {
   display: flex;
 }
 
+/* CORREÇÃO APLICADA AQUI */
 .slider_heading {
   position: absolute;
-  /* NOVO: Garante que o título do slider fique atrás do menu */
-  z-index: 10; /* Z-index baixo comparado ao menu (100+) */
-  left: -8vw;
+  z-index: 99;
+  left: 2vw;
   top: 50%;
+  -webkit-transform: translateY(-50%) rotate(270deg);
   transform: translateY(-50%) rotate(270deg);
+  -webkit-transform-origin: left center;
+  transform-origin: left center;
   pointer-events: none;
-}
-
-.slider_section {
-  -webkit-transform: rotate(270.5deg) scaleX(1);
-          transform: rotate(270.5deg) scaleX(1);
-  position: absolute;
-  left: -150px;
-  top: -25px;
 }
 
 .slider_section .slider_heading h2 {
@@ -293,7 +265,7 @@ a:focus {
   display: flex;
   font-size: 6vw;
   text-transform: uppercase;
-  text-orientation: upright;
+  /* text-orientation: upright; <-- Removido pois é experimental */
   font-weight: bold;
   color: #ffffff;
 }
@@ -406,23 +378,23 @@ a:focus {
 }
 
 .slider_section .carousel-control-prev {
-  background-image: url(../images/prev.png);
+  background-image: url(https://laurafercordeiro.github.io/Muay-Thai/images/prev.png);
   -webkit-transform: translateY(57%);
-          transform: translateY(57%);
+  transform: translateY(57%);
 }
 
 .slider_section .carousel-control-prev:hover {
-  background-image: url(../images/prev-grey.png);
+  background-image: url(https://laurafercordeiro.github.io/Muay-Thai/images/prev-grey.png);
 }
 
 .slider_section .carousel-control-next {
-  background-image: url(../images/next.png);
+  background-image: url(https://laurafercordeiro.github.io/Muay-Thai/images/next.png);
   -webkit-transform: translateY(-57%);
-          transform: translateY(-57%);
+  transform: translateY(-57%);
 }
 
 .slider_section .carousel-control-next:hover {
-  background-image: url(../images/next-grey.png);
+  background-image: url(https://laurafercordeiro.github.io/Muay-Thai/images/next-grey.png);
 }
 
 .slider_section .number_box {
@@ -442,7 +414,7 @@ a:focus {
           align-items: center;
   color: #b82d2d;
   -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
+  transform: translateY(-50%);
 }
 
 .slider_section .number_box hr {
@@ -464,7 +436,7 @@ a:focus {
 
 .about_section .about_container {
   padding: 45px;
-  background-image: url(../images/lutador.jpg);
+  background-image: url(https://laurafercordeiro.github.io/Muay-Thai/images/lutador.jpg);
   background-size: cover;
 }
 
@@ -498,7 +470,6 @@ a:focus {
   border-radius: 35px;
   color: #ffffff;
   margin: 35px auto 0 auto;
-  
   -webkit-box-shadow: 0 0 35px 0 #610f0f;
           box-shadow: 0 0 35px 0 #610f0f;
 }
@@ -513,7 +484,7 @@ a:focus {
   position: relative;
 }
 
-.class_section .row > div {
+.class_section .row>div {
   position: unset;
 }
 
@@ -633,7 +604,7 @@ a:focus {
   top: 50%;
   right: 45px;
   -webkit-transform: translateY(-100%);
-          transform: translateY(-100%);
+  transform: translateY(-100%);
 }
 
 .class_section .owl-carousel .owl-nav .owl-prev,
@@ -656,21 +627,21 @@ a:focus {
 .class_section .owl-carousel .owl-nav .owl-prev {
   width: 75px;
   height: 75px;
-  background-image: url(../images/prev.png);
+  background-image: url(https://laurafercordeiro.github.io/Muay-Thai/images/prev.png);
 }
 
 .class_section .owl-carousel .owl-nav .owl-prev:hover {
-  background-image: url(../images/prev-grey.png);
+  background-image: url(https://laurafercordeiro.github.io/Muay-Thai/images/prev-grey.png);
 }
 
 .class_section .owl-carousel .owl-nav .owl-next {
   width: 50px;
   height: 50px;
-  background-image: url(../images/next.png);
+  background-image: url(https://laurafercordeiro.github.io/Muay-Thai/images/next.png);
 }
 
 .class_section .owl-carousel .owl-nav .owl-next:hover {
-  background-image: url(../images/next-grey.png);
+  background-image: url(https://laurafercordeiro.github.io/Muay-Thai/images/next-grey.png);
 }
 
 .blog_section {
@@ -719,7 +690,7 @@ a:focus {
       -ms-flex-align: center;
           align-items: center;
   -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
+  transform: translateY(-50%);
 }
 
 .blog_section .box .detail-box .img_date h6 {
@@ -848,18 +819,18 @@ a:focus {
 }
 
 .client_section .owl-carousel .owl-nav .owl-prev {
-  background-image: url(../images/prev-arrow.png);
+  background-image: url(https://laurafercordeiro.github.io/Muay-Thai/images/prev-arrow.png);
   background-color: #000000;
   -webkit-transform: translateX(10px);
-          transform: translateX(10px);
+  transform: translateX(10px);
   background-position: 15px center;
 }
 
 .client_section .owl-carousel .owl-nav .owl-next {
-  background-image: url(../images/next-arrow.png);
+  background-image: url(https://laurafercordeiro.github.io/Muay-Thai/images/next-arrow.png);
   background-color: #ffffff;
   -webkit-transform: translateX(-10px);
-          transform: translateX(-10px);
+  transform: translateX(-10px);
 }
 
 .info_section .info_main-row {
@@ -944,7 +915,7 @@ a:focus {
   width: 100%;
 }
 
-.info_section p{
+.info_section p {
   color: white;
 }
 
@@ -981,29 +952,31 @@ a:focus {
   color: #1c1b1b;
 }
 
-#logo{
+#logo {
   position: relative;
   width: 110px;
   bottom: 7px;
 }
 
-.map-responsive{
-  overflow:hidden;
-  padding-bottom:56.25%;
-  position:relative;
-  height:0;
+.map-responsive {
+  overflow: hidden;
+  padding-bottom: 56.25%;
+  position: relative;
+  height: 0;
 }
 
-.map-responsive iframe{
-  left:0;
-  top:0;
-  height:100%;
-  width:100%;
-  position:absolute;
+.map-responsive iframe {
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  position: absolute;
 }
-
-
-
-
 /* end footer section*/
-/*# sourceMappingURL=style.css.map */
+
+/* Media Query para responsividade */
+@media (max-width: 768px) {
+  .slider_heading {
+    display: none;
+  }
+}
