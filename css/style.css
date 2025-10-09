@@ -1,11 +1,19 @@
+/* Reset básico e fonte */
 body {
   font-family: "Poppins", sans-serif;
-  color: #040000;
-  background-color: #610f0f;
+  color: #fff;
+  background-color: #1c0f0f;
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
 }
 
-.layout_padding {
+/* Padding de seções */
+.layout_padding, .layout_padding-top {
   padding-top: 120px;
+}
+
+.layout_padding, .layout_padding-bottom {
   padding-bottom: 120px;
 }
 
@@ -13,53 +21,38 @@ body {
   padding: 45px 0;
 }
 
-.layout_padding2-top {
-  padding-top: 45px;
-}
-
-.layout_padding2-bottom {
-  padding-bottom: 45px;
-}
-
-.layout_padding-top {
-  padding-top: 120px;
-}
-
-.layout_padding-bottom {
-  padding-bottom: 120px;
-}
-
+/* Headings */
 .heading_container {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 20px;
 }
 
 .heading_container h2 {
-  font-weight: bold;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  font-weight: 900;
   text-transform: uppercase;
+  font-size: 2.5rem;
   color: #ffffff;
+  position: relative;
 }
 
-/*header section*/
+.heading_container h2::after {
+  content: "";
+  width: 60px;
+  height: 4px;
+  background-color: #b82d2d;
+  display: block;
+  margin-top: 10px;
+  border-radius: 2px;
+}
+
+/* Header */
 .hero_area {
   height: 100vh;
   background-image: url(https://laurafercordeiro.github.io/Muay-Thai/images/lutador2.jpg);
-  background-repeat: no-repeat;
   background-size: cover;
+  background-position: center;
   position: relative;
 }
 
@@ -70,913 +63,166 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(transparent), to(#610f0f));
-  background: linear-gradient(to bottom, transparent, transparent, #610f0f);
+  background: linear-gradient(to bottom, rgba(28,15,15,0.7), rgba(28,15,15,0.9));
 }
 
-.sub_page .hero_area {
-  height: auto;
-}
-
-.sub_page .class_section .owl-carousel .owl-nav {
-  top: 55%;
-}
-
-.header_section::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 62%;
-  height: 45px;
-  background: #080203;
-  z-index: 1;
-  -webkit-clip-path: polygon(50% 0%, 100% 0, 100% 100%, 8% 100%, 0 0);
-          clip-path: polygon(50% 0%, 100% 0, 100% 100%, 8% 100%, 0 0);
-}
-
-.header_section .nav_container {
-  margin: 0 auto;
-}
-
+/* Navbar */
 .header_section {
-  background-color: #ffffff;
+  background-color: rgba(255,255,255,0.95);
   position: relative;
-  -webkit-clip-path: polygon(50% 0%, 100% 0, 100% 100%, 28.5% 100%, 26.5% 86%, 0 84%, 0 0);
-  clip-path: polygon(50% 0%, 100% 0, 100% 100%, 28.5% 100%, 26.5% 86%, 0 84%, 0 0);
   z-index: 100;
-}
-
-.main_nav {
-  position: relative;
-  z-index: 101;
-}
-
-.menu_width {
-  width: 100%;
-}
-
-a,
-a:hover,
-a:focus {
-  text-decoration: none;
-}
-
-a:hover,
-a:focus {
-  color: initial;
-}
-
-.btn,
-.btn:focus {
-  outline: none !important;
-  -webkit-box-shadow: none;
-          box-shadow: none;
-}
-
-.header_nav {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-}
-
-.main_nav {
-  position: relative;
-  z-index: 9;
-}
-
-.main_nav .top_nav ul {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  margin: 0;
-}
-
-.main_nav .top_nav ul li {
-  list-style-type: none;
-}
-
-.main_nav .top_nav ul li a {
-  display: inline-block;
-  color: #ffffff;
-  margin: 10px 0 10px 35px;
-}
-
-.main_nav .top_nav ul li a img {
-  max-width: 25px;
-  max-height: 25px;
-  margin-right: 15px;
-}
-
-.custom_nav-container.navbar-expand-lg .navbar-nav .nav-item .nav-link {
-  padding: 25px 20px;
-  color: #212121;
-  text-align: center;
-  text-transform: uppercase;
-}
-
-.custom_nav-container .nav_search-btn {
-  background-image: url(https://laurafercordeiro.github.io/Muay-Thai/images/search-icon.png);
-  background-size: 22px;
-  background-repeat: no-repeat;
-  background-position-y: 7px;
-  width: 35px;
-  height: 35px;
-  padding: 0;
-  border: none;
-}
-
-.navbar-brand {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  border-radius: 0 0 50px 50px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  padding: 0 15px;
 }
 
 .navbar-brand img {
-  width: 125px;
-  margin-right: 5px;
+  width: 130px;
+  transition: transform 0.3s ease;
 }
 
-.navbar-brand.brand_mobile {
-  display: none;
+.navbar-brand img:hover {
+  transform: scale(1.05);
 }
 
-.custom_nav-container {
-  z-index: 99999;
-}
-
-.custom_nav-container .navbar-toggler {
-  outline: none;
-}
-
-.custom_nav-container .navbar-toggler .navbar-toggler-icon {
-  background-image: url(https://laurafercordeiro.github.io/Muay-Thai/images/menu.png);
-  background-size: 55px;
-}
-
-/*end header section*/
-
-/* slider section */
-.slider_section {
-  height: calc(100% - 80px);
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.slider_section #carouselExampleIndicators {
-  width: 100%;
-}
-
-.slider_section .row .col-md-10 {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-/* CORREÇÃO APLICADA AQUI */
-.slider_heading {
-  position: absolute;
-  z-index: 99;
-  left: 2vw;
-  top: 50%;
-  -webkit-transform: translateY(-50%) rotate(270deg);
-  transform: translateY(-50%) rotate(270deg);
-  -webkit-transform-origin: left center;
-  transform-origin: left center;
-  pointer-events: none;
-}
-
-.slider_section .slider_heading h2 {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  font-size: 6vw;
+.custom_nav-container .nav-link {
   text-transform: uppercase;
-  /* text-orientation: upright; <-- Removido pois é experimental */
-  font-weight: bold;
-  color: #ffffff;
+  font-weight: 600;
+  color: #222;
+  padding: 20px 15px;
+  transition: color 0.3s ease;
 }
 
-.slider_section .slider_heading h2 span {
+.custom_nav-container .nav-link:hover {
   color: #b82d2d;
 }
 
+.navbar-toggler {
+  border: none;
+  outline: none;
+}
+
+.navbar-toggler-icon {
+  background-image: url(https://laurafercordeiro.github.io/Muay-Thai/images/menu.png);
+  background-size: 35px;
+}
+
+/* Slider */
 .slider_section .detail-box h1 {
   font-size: 3rem;
-  font-weight: bold;
+  font-weight: 900;
+  color: #fff;
   text-transform: uppercase;
-  color: #ffffff;
+  text-shadow: 2px 2px 10px rgba(0,0,0,0.7);
 }
 
 .slider_section .detail-box hr {
-  margin: 0 auto;
   border: none;
-  width: 1.5px;
-  height: 65px;
-  background-color: #ffffff;
+  width: 2px;
+  height: 60px;
+  background-color: #b82d2d;
+  margin: 20px auto;
 }
 
-.slider_section .detail-box .btn-box {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  margin-top: 35px;
-}
-
-.slider_section .detail-box .btn-box .btn-1 {
-  display: inline-block;
-  padding: 10px 35px;
-  background-color: #000000;
-  border: 1px solid transparent;
+.slider_section .detail-box .btn-1 {
+  background-color: #b82d2d;
+  color: #fff;
   border-radius: 35px;
-  color: #ffffff;
+  padding: 12px 40px;
+  font-weight: 600;
+  transition: all 0.3s ease;
 }
 
-.slider_section .detail-box .btn-box .btn-1:hover {
-  background-color: #ffffff;
-  color: #000000;
-}
-
-.slider_section #carouselExampleIndicators {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
-}
-
-.slider_section #carouselExampleIndicators .box {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
-}
-
-.slider_section .carousel-indicators {
-  position: unset;
-  margin: 0 70px 45px 70px;
-}
-
-.slider_section .carousel-indicators li {
-  text-indent: unset;
-  border: none;
-  background-color: transparent;
-  color: #ffffff;
-  font-weight: bold;
-  font-size: 2rem;
-  opacity: 1;
-  display: none;
-}
-
-.slider_section .carousel-indicators li.active {
-  display: inline-block;
-}
-
-.slider_section .carousel-control-prev,
-.slider_section .carousel-control-next {
-  position: absolute;
-  top: 45%;
-  left: initial;
-  right: 25px;
-  width: 55px;
-  height: 55px;
-  border: none;
-  opacity: 1;
-  background-repeat: no-repeat;
-  background-size: 8px;
-  background-position: center;
-  background-color: #b82d2d;
-  border-radius: 100%;
-}
-
-.slider_section .carousel-control-prev:hover,
-.slider_section .carousel-control-next:hover {
-  background-color: #ffffff;
-}
-
-.slider_section .carousel-control-prev {
-  background-image: url(https://laurafercordeiro.github.io/Muay-Thai/images/prev.png);
-  -webkit-transform: translateY(57%);
-  transform: translateY(57%);
-}
-
-.slider_section .carousel-control-prev:hover {
-  background-image: url(https://laurafercordeiro.github.io/Muay-Thai/images/prev-grey.png);
-}
-
-.slider_section .carousel-control-next {
-  background-image: url(https://laurafercordeiro.github.io/Muay-Thai/images/next.png);
-  -webkit-transform: translateY(-57%);
-  transform: translateY(-57%);
-}
-
-.slider_section .carousel-control-next:hover {
-  background-image: url(https://laurafercordeiro.github.io/Muay-Thai/images/next-grey.png);
-}
-
-.slider_section .number_box {
-  width: 50px;
-  position: absolute;
-  left: 25px;
-  top: 50%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+.slider_section .detail-box .btn-1:hover {
+  background-color: #fff;
   color: #b82d2d;
-  -webkit-transform: translateY(-50%);
-  transform: translateY(-50%);
+  transform: scale(1.05);
 }
 
-.slider_section .number_box hr {
-  border: none;
-  width: 1px;
-  height: 200px;
-  background-color: #b82d2d;
-  margin: 2rem 0;
-}
-
-/* end slider section */
-.about_section {
-  color: #ffffff;
-}
-
-.about_section .heading_container h2 {
-  color: #ffffff;
-}
-
+/* About Section */
 .about_section .about_container {
-  padding: 45px;
+  padding: 50px;
   background-image: url(https://laurafercordeiro.github.io/Muay-Thai/images/lutador.jpg);
   background-size: cover;
-}
-
-.about_section .about_container .detail-box {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-}
-
-.about_section .about_container .detail-box p {
-  margin-top: 25px;
-}
-
-.about_section .about_container .detail-box hr {
-  margin: 0 auto;
-  border: none;
-  width: 1.5px;
-  height: 125px;
-  background-color: #ffffff;
-}
-
-.about_section .about_container .detail-box a {
-  display: inline-block;
-  padding: 8px 35px;
-  background-color: #000000;
-  border: 1px solid transparent;
-  border-radius: 35px;
-  color: #ffffff;
-  margin: 35px auto 0 auto;
-  -webkit-box-shadow: 0 0 35px 0 #610f0f;
-          box-shadow: 0 0 35px 0 #610f0f;
-}
-
-.about_section .about_container .detail-box a:hover {
-  background-color: #ffffff;
-  color: #000000;
-}
-
-.class_section {
-  color: #ffffff;
-  position: relative;
-}
-
-.class_section .row>div {
-  position: unset;
-}
-
-.class_section .class_box-container {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  margin-top: 45px;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-}
-
-.class_section .class_box-container .box {
-  position: relative;
-}
-
-.class_section .class_box-container .box .img-box {
-  position: relative;
-  padding-left: 105px;
-  background-color: #000000;
-}
-
-.class_section .class_box-container .box .img-box video {
-  width: 75%;
-}
-
-.class_section .class_box-container .box .img-box .detail-box {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: end;
-      -ms-flex-align: end;
-          align-items: flex-end;
-  width: 100%;
-  height: 100%;
-  padding: 55px 0;
-  border-radius: 10px;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
-.class_section .class_box-container .box .img-box .detail-box button {
-  background-color: #292929;
-  border: none;
-  width: 55px;
-  height: 55px;
-  margin: 0 10px;
-  border-radius: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.class_section .class_box-container .box .img-box .detail-box button video {
-  width: 20px;
-  margin-left: 5px;
-}
-
-.class_section .class_box-container .box .img-box .detail-box h2 {
-  margin: 0;
-  text-transform: uppercase;
-  color: #ffffff;
-  font-weight: bold;
-  line-height: 55px;
-  margin-left: 15px;
-}
-
-.class_section .class_box-container .box .btn-box {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  margin-top: 30px;
-}
-
-.class_section .class_box-container .box .btn-box a {
-  display: inline-block;
-  padding: 10px 45px;
-  background-color: #000000;
-  border: 1px solid transparent;
-  border-radius: 30px;
-  color: #ffffff;
-}
-
-.class_section .class_box-container .box .btn-box a:hover {
-  background-color: #ffffff;
-  color: #000000;
-}
-
-.class_section .owl-carousel {
-  position: unset;
-}
-
-.class_section .owl-carousel .owl-nav {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: reverse;
-      -ms-flex-direction: column-reverse;
-          flex-direction: column-reverse;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  padding: 0 10px;
-  margin-top: 55px;
-  position: absolute;
-  top: 50%;
-  right: 45px;
-  -webkit-transform: translateY(-100%);
-  transform: translateY(-100%);
-}
-
-.class_section .owl-carousel .owl-nav .owl-prev,
-.class_section .owl-carousel .owl-nav .owl-next {
-  background-color: #000000;
-  opacity: 1;
-  background-repeat: no-repeat;
   background-position: center;
-  background-size: 12px;
-  border-radius: 100%;
-  outline: none;
-  margin: 2px 0;
-}
-
-.class_section .owl-carousel .owl-nav .owl-prev:hover,
-.class_section .owl-carousel .owl-nav .owl-next:hover {
-  background-color: #ffffff;
-}
-
-.class_section .owl-carousel .owl-nav .owl-prev {
-  width: 75px;
-  height: 75px;
-  background-image: url(https://laurafercordeiro.github.io/Muay-Thai/images/prev.png);
-}
-
-.class_section .owl-carousel .owl-nav .owl-prev:hover {
-  background-image: url(https://laurafercordeiro.github.io/Muay-Thai/images/prev-grey.png);
-}
-
-.class_section .owl-carousel .owl-nav .owl-next {
-  width: 50px;
-  height: 50px;
-  background-image: url(https://laurafercordeiro.github.io/Muay-Thai/images/next.png);
-}
-
-.class_section .owl-carousel .owl-nav .owl-next:hover {
-  background-image: url(https://laurafercordeiro.github.io/Muay-Thai/images/next-grey.png);
-}
-
-.blog_section {
-  color: #ffffff;
-}
-
-.blog_section .box {
-  background-color: #000000;
-  margin: 25px auto;
-}
-
-.blog_section .box .img-box {
-  position: relative;
-}
-
-.blog_section .box .img-box img {
-  display: flex;
-  margin: 25px auto;
-  width: 60%;
-  height: 60%;
-}
-
-.blog_section .box .detail-box {
-  position: relative;
-  padding-top: 75px;
-  padding-bottom: 35px;
-}
-
-.blog_section .box .detail-box .img_date {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 75px;
-  height: 75px;
-  border-radius: 100%;
-  text-align: center;
-  background-color: #b82d2d;
-  color: #ffffff;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-transform: translateY(-50%);
-  transform: translateY(-50%);
-}
-
-.blog_section .box .detail-box .img_date h6 {
-  margin: 0;
-}
-
-.blog_section .box .detail-box h3 {
-  font-weight: bold;
-}
-
-.blog_section .box .detail-box a {
-  display: inline-block;
-  padding: 8px 25px;
-  background-color: #000000;
-  border: 1px solid transparent;
-  border-radius: 35px;
-  color: #ffffff;
-  margin-top: 35px;
-}
-
-.blog_section .box .detail-box a:hover {
-  background-color: #ffffff;
-  color: #000000;
-}
-
-.blog_section .box.b1 .detail-box {
-  padding-right: 35px;
-}
-
-.blog_section .box.b2 .detail-box {
-  padding-left: 35px;
-}
-
-.blog_section .box.b2 .detail-box .img_date {
-  left: 35px;
-}
-
-.client_section {
-  color: #ffffff;
-}
-
-.client_section .heading_container {
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  text-align: center;
-  margin-bottom: 45px;
-}
-
-.client_section .box {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  margin: 0 10px;
-}
-
-.client_section .box .img-box {
-  width: 125px;
-  border-radius: 100%;
-  margin-bottom: -62px;
-  position: relative;
-  z-index: 2;
-}
-
-.client_section .box .img-box img {
-  width: 100%;
-}
-
-.client_section .box .detail-box {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  padding: 95px 25px 45px 25px;
-  background-color: #050304;
-}
-
-.client_section .box .detail-box h4 {
-  font-weight: bold;
-}
-
-.client_section .box .detail-box p {
-  margin-top: 25px;
-}
-
-.client_section .box .detail-box img {
-  width: 35px;
-  margin-top: 25px;
-}
-
-.client_section .owl-carousel .owl-nav {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  padding: 0 10px;
-  margin-top: 55px;
-}
-
-.client_section .owl-carousel .owl-nav .owl-prev,
-.client_section .owl-carousel .owl-nav .owl-next {
-  width: 55px;
-  height: 50px;
-  opacity: 1;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 12px;
-  border-radius: 10px;
-  outline: none;
-  margin: 0;
-}
-
-.client_section .owl-carousel .owl-nav .owl-prev {
-  background-image: url(https://laurafercordeiro.github.io/Muay-Thai/images/prev-arrow.png);
-  background-color: #000000;
-  -webkit-transform: translateX(10px);
-  transform: translateX(10px);
-  background-position: 15px center;
-}
-
-.client_section .owl-carousel .owl-nav .owl-next {
-  background-image: url(https://laurafercordeiro.github.io/Muay-Thai/images/next-arrow.png);
-  background-color: #ffffff;
-  -webkit-transform: translateX(-10px);
-  transform: translateX(-10px);
-}
-
-.info_section .info_main-row {
-  -webkit-box-align: end;
-      -ms-flex-align: end;
-          align-items: flex-end;
-}
-
-.info_section .contact_section {
-  position: relative;
-}
-
-.info_section .contact_section h2 {
-  font-weight: bold;
-}
-
-.info_section .contact_section form {
-  margin-top: 45px;
-  padding-right: 35px;
-  margin-bottom: 45px;
-}
-
-.info_section .contact_section input {
-  width: 100%;
-  border: none;
-  height: 50px;
-  margin-bottom: 25px;
-  padding-left: 25px;
-  background-color: #000;
-  outline: none;
-  color: #ffffff;
-  border-radius: 45px;
-}
-
-.info_section .contact_section input::-webkit-input-placeholder {
-  color: #737272;
-}
-
-.info_section .contact_section input:-ms-input-placeholder {
-  color: #737272;
-}
-
-.info_section .contact_section input::-ms-input-placeholder {
-  color: #737272;
-}
-
-.info_section .contact_section input::placeholder {
-  color: #737272;
-}
-
-.info_section .contact_section input.message-box {
-  height: 135px;
   border-radius: 25px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.6);
 }
 
-.info_section .contact_section button {
-  border: none;
-  display: inline-block;
-  padding: 12px 55px;
-  background-color: #ffffff;
-  border: 1px solid transparent;
-  border-radius: 35px;
-  color: #000000;
-  margin-top: 35px;
+.about_section p {
+  line-height: 1.8;
+  font-size: 1.05rem;
 }
 
-.info_section .contact_section button:hover {
-  background-color: #000000;
-  color: #ffffff;
+.about_section a {
+  padding: 12px 35px;
+  border-radius: 50px;
+  background-color: #b82d2d;
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: 600;
+  transition: 0.3s;
 }
 
-.info_section .contact_section .map_container {
-  height: 100%;
-  min-height: 325px;
+.about_section a:hover {
+  background-color: #fff;
+  color: #b82d2d;
 }
 
-.info_section .contact_section .map_container .map-responsive {
-  height: 100%;
+/* Classes / Vídeos */
+.class_section .class_box-container .box .img-box {
+  background-color: rgba(0,0,0,0.7);
+  border-radius: 25px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
 }
 
-.info_section .img-box img {
+.class_section .class_box-container .box .img-box:hover {
+  transform: scale(1.03);
+}
+
+.class_section video {
+  border-radius: 15px;
   width: 100%;
 }
 
-.info_section p {
-  color: white;
+/* Horários / Blog */
+.blog_section .box {
+  background-color: rgba(0,0,0,0.75);
+  border-radius: 25px;
+  padding: 25px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.5);
 }
 
-/* footer section*/
+/* Footer */
 .footer_section {
-  margin: 15px 0;
-}
-
-.footer_section .social_box {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.footer_section .social_box a {
-  margin-right: 15px;
+  background-color: #111;
+  padding: 25px 0;
+  text-align: center;
 }
 
 .footer_section .social_box a img {
-  max-width: 25px;
-  max-height: 25px;
+  width: 30px;
+  transition: transform 0.3s ease;
 }
 
-.footer_section p {
-  margin: 0;
-  margin-top: 25px;
-  color: #ffffff;
+.footer_section .social_box a img:hover {
+  transform: scale(1.2);
 }
 
-.footer_section a {
-  color: #1c1b1b;
-}
-
-#logo {
-  position: relative;
-  width: 110px;
-  bottom: 7px;
-}
-
-.map-responsive {
-  overflow: hidden;
-  padding-bottom: 56.25%;
-  position: relative;
-  height: 0;
-}
-
+/* Maps */
 .map-responsive iframe {
-  left: 0;
-  top: 0;
-  height: 100%;
-  width: 100%;
-  position: absolute;
+  border-radius: 25px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.5);
 }
-/* end footer section*/
 
-/* Media Query para responsividade */
+/* Responsividade */
 @media (max-width: 768px) {
   .slider_heading {
     display: none;
   }
+  .heading_container h2 {
+    font-size: 1.8rem;
+  }
 }
+
