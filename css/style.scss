@@ -264,10 +264,12 @@ a:focus {
 /* slider section */
 
 .slider_section {
-  height: calc(100% - 80px);
+  position: relative;
+  height: calc(100vh - 80px);
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden; /* evita que o heading “vaze” para fora */
 
   #carouselExampleIndicators {
     width: 100%;
@@ -276,14 +278,18 @@ a:focus {
   .row {
     .col-md-10 {
       display: flex;
+      align-items: center;
+      justify-content: center;
     }
   }
 
   .slider_heading {
-    transform: rotate(270.5deg) scaleX(-1);
     position: absolute;
-    left: -150px;
-    top: -25px;
+    left: -120px;
+    top: 50%;
+    transform: translateY(-50%) rotate(270deg) scaleX(-1);
+    z-index: 3;
+    pointer-events: none;
 
     h2 {
       display: flex;
@@ -292,12 +298,45 @@ a:focus {
       text-orientation: upright;
       font-weight: bold;
       color: $white;
+      line-height: 0.8;
 
       span {
         color: $primary;
       }
     }
+
+    @media (max-width: 1200px) {
+      left: -100px;
+      h2 {
+        font-size: 8rem;
+      }
+    }
+
+    @media (max-width: 992px) {
+      left: -80px;
+      h2 {
+        font-size: 6rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      position: relative;
+      left: 0;
+      top: auto;
+      transform: none;
+      text-align: center;
+      margin-bottom: 20px;
+
+      h2 {
+        font-size: 3rem;
+        justify-content: center;
+        writing-mode: horizontal-tb;
+        transform: none;
+      }
+    }
   }
+}
+
 
   .detail-box {
     h1 {
@@ -886,5 +925,6 @@ a:focus {
 .footer_section a {
   color: #1c1b1b;
 }
+
 
 /* end footer section*/
