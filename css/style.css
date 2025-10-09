@@ -239,6 +239,22 @@ body {
     border-top: 2px solid var(--cor-preta);
 }
 
+/* --- Correção do botão no celular --- */
+@media (max-width: 480px) {
+    .cta-button {
+        display: block;
+        width: 90%;          /* Faz o botão ocupar quase toda a largura da tela */
+        max-width: 300px;    /* Limite de tamanho */
+        margin: 0 auto;      /* Centraliza */
+        font-size: 1.1rem;   /* Texto menor para caber */
+        padding: 12px 20px;  /* Reduz o espaçamento interno */
+        line-height: 1.2;
+        white-space: normal; /* Permite quebra de linha */
+        text-align: center;
+    }
+}
+
+
 /* --- Responsividade --- */
 @media (max-width: 768px) {
     .section-title {
