@@ -137,16 +137,20 @@ body {
     margin-bottom: 10px;
 }
 
-/* --- Seção de Vídeos --- */
+/* --- Seção de Vídeos (CORRIGIDA) --- */
 .video-gallery {
+    /* Reduzi minmax para melhor responsividade em telas intermediárias */
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
     gap: 20px;
 }
 
 .video-gallery video {
     width: 100%;
-    height: auto;
+    /* Define uma altura fixa para que todos os vídeos fiquem uniformes. 
+       180px para 300px de largura é próximo de 16:9, padrão web. */
+    height: 180px; 
+    object-fit: cover; /* Garante que o vídeo preencha o espaço sem ser distorcido */
     border-radius: 8px;
     border: 3px solid var(--cor-cinza-escuro);
     transition: transform 0.3s ease, border-color 0.3s ease;
