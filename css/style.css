@@ -82,13 +82,6 @@ body {
   top: 55%;
 }
 
-.header_section {
-  background-color: #ffffff;
-  position: relative;
-  -webkit-clip-path: polygon(50% 0%, 100% 0, 100% 100%, 28.5% 100%, 26.5% 86%, 0 84%, 0 0);
-          clip-path: polygon(50% 0%, 100% 0, 100% 100%, 28.5% 100%, 26.5% 86%, 0 84%, 0 0);
-}
-
 .header_section::before {
   content: "";
   position: absolute;
@@ -104,6 +97,23 @@ body {
 
 .header_section .nav_container {
   margin: 0 auto;
+}
+
+.header_section {
+  background-color: #ffffff;
+  position: relative;
+  /* Mantenha o clip-path original */
+  -webkit-clip-path: polygon(50% 0%, 100% 0, 100% 100%, 28.5% 100%, 26.5% 86%, 0 84%, 0 0);
+  clip-path: polygon(50% 0%, 100% 0, 100% 100%, 28.5% 100%, 26.5% 86%, 0 84%, 0 0);
+  /* NOVO: Garante que o cabeçalho esteja acima */
+  z-index: 100;
+}
+
+/* O elemento de navegação principal também precisa estar no topo. */
+.main_nav {
+  position: relative;
+  /* NOVO: Garante que a barra de navegação principal esteja acima */
+  z-index: 101; 
 }
 
 .menu_width {
@@ -234,6 +244,8 @@ a:focus {
 
 /*end header section*/
 /* slider section */
+
+
 .slider_section {
   height: calc(100% - 80px);
   display: -webkit-box;
@@ -257,7 +269,17 @@ a:focus {
   display: flex;
 }
 
-.slider_section .slider_heading {
+.slider_heading {
+  position: absolute;
+  /* NOVO: Garante que o título do slider fique atrás do menu */
+  z-index: 10; /* Z-index baixo comparado ao menu (100+) */
+  left: -8vw;
+  top: 50%;
+  transform: translateY(-50%) rotate(270deg);
+  pointer-events: none;
+}
+
+.slider_section {
   -webkit-transform: rotate(270.5deg) scaleX(1);
           transform: rotate(270.5deg) scaleX(1);
   position: absolute;
